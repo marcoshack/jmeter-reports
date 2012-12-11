@@ -4,7 +4,7 @@ $:.push File.join(File.dirname(__FILE__), '..'), File.join(File.dirname(__FILE__
 require 'jmeter/reports'
 
 if ARGV[0] == nil || ARGV[0].empty?
-  puts "Usage: #{__FILE__} <report_file>"
+  puts "Usage: #{File.basename(__FILE__)} <report_file>"
   exit 1
 end
 
