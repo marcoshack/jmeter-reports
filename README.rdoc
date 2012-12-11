@@ -1,0 +1,10 @@
+== JMeter Reports
+
+Basic tools for JMeter reports processing.
+
+Right now it supports only CSV summary reports processing to show:
+
+* Test execution time
+* Average request throughput
+* Number of requests/errors for each request and/or transaction
+* 90 and 95 response time percentiles
