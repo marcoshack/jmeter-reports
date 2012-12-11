@@ -29,7 +29,7 @@ module Jmeter
         p90 = sorted_items[(self.size * 0.90).round]
         p95 = sorted_items[(self.size * 0.95).round]
         err_rate = round(self.error_rate, 3) * 100
-        "#{@label}: #{self.size}/#{self.errors} reqs/err(#{round(self.error_rate, 3)}%), " +
+        "#{@label}: #{self.size}/#{self.errors} reqs/err(#{round(self.error_rate, 3) * 100}%), " +
         "90% <= #{p90}ms, 95% <= #{p95}ms"
       end
       

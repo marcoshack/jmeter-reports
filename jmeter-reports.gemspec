@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |gem|
   gem.name          = "jmeter-reports"
-  gem.version       = "0.0.1alpha"
+  gem.version       = "0.0.2"
   gem.authors       = ["Marcos Hack"]
   gem.email         = ["marcos.hack@gmail.com"]
   gem.description   = %q{JMeter Reports}
