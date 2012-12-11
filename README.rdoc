@@ -1,4 +1,4 @@
-== JMeter Reports {<img src="https://travis-ci.org/marcoshack/jmeter-reports.png" />}[https://travis-ci.org/marcoshack/jmeter-reports]
+== JMeter Reports {<img src="https://travis-ci.org/marcoshack/jmeter-reports.png?branch=master" alt="Build Status" />}[https://travis-ci.org/marcoshack/jmeter-reports]
 
 Basic tools for JMeter reports processing.
 
