@@ -1,0 +1,15 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    minitest (2.12.1)
+    minitest-colorize (0.0.4)
+      minitest (~> 2.0)
+    rake (10.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  minitest-colorize
+  rake
