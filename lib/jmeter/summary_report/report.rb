@@ -47,6 +47,10 @@ module Jmeter
       def items
         @items.values
       end
+      
+      def total_requests
+        @req_count
+      end
     end
   end
 end

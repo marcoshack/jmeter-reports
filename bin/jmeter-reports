@@ -3,18 +3,27 @@
 $:.push File.join(File.dirname(__FILE__), '..'), File.join(File.dirname(__FILE__), '..','lib')
 require 'jmeter/reports'
 
-if ARGV[0] == nil || ARGV[0].empty?
+if ARGV.empty?
   puts "Usage: #{File.basename(__FILE__)} <report_file>"
   exit 1
 end
 
 begin
-  report = Jmeter::SummaryReport::Report.create(ARGV[0])
-  puts "Test time: #{report.elapsed} secs"
-  puts "Average throughput: #{report.avg_throughput} RPS"
-  puts "Test plan:"
-  report.items.each do |item|
-    puts "\t#{item.text_summary}"
+  if ARGV.size > 1
+    puts "filename,elapsed,requests,avg_throughput"
+    ARGV.each do |filename|
+      r = Jmeter::SummaryReport::Report.create(filename)
+      puts "#{filename},#{r.elapsed},#{r.total_requests},#{r.avg_throughput}"
+    end
+  else
+    report = Jmeter::SummaryReport::Report.create(ARGV.first)
+    puts "Test time: #{report.elapsed} secs"
+    puts "Total requests: #{report.total_requests}"
+    puts "Average throughput: #{report.avg_throughput} RPS"
+    puts "Test plan:"
+    report.items.each do |item|
+      puts "\t#{item.text_summary}"
+    end
   end
 rescue Exception => e
   puts e.message

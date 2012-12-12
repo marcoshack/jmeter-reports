@@ -14,7 +14,7 @@ module Jmeter
       attr_accessor :timestamp, :elapsed, :label, :error, :latency
       
       def self.parse(line)
-        t,e,l,rc,rm,_,_,s,_,_,_,_,lt = line.split(",")
+        t,e,l,rc,rm,_,_,_,s,_,_,_,_,lt = line.split(",")
         res = Jmeter::SummaryReport::ResultLine.new
         res.timestamp = t.to_i
         res.elapsed   = e.to_i

@@ -7,9 +7,9 @@ module Jmeter
         @error_count = 0
       end
       
-      def add(item)
-        @error_count += 1 if item.error?
-        @items << item.elapsed
+      def add(line)
+        @error_count += 1 if line.error?
+        @items << line.elapsed
       end
       
       def size
