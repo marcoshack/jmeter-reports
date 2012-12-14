@@ -17,7 +17,7 @@ begin
     end
   else
     report = Jmeter::SummaryReport::Report.create(ARGV.first)
-    puts "Test time: #{report.elapsed} secs"
+    puts "Test run between #{report.start_date} and #{report.end_date} (#{report.elapsed} secs)"
     puts "Total requests: #{report.total_requests}"
     puts "Average throughput: #{report.avg_throughput} RPS"
     puts "Test plan:"

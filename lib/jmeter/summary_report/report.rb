@@ -28,12 +28,12 @@ module Jmeter
         @items[line.label] = ReportItem.new(line.label) if @items[line.label].nil?
         @items[line.label].add(line)
         @req_count += 1
-        @start = line.timestamp if @start.nil? || line.timestamp < @start
-        @end   = line.timestamp if @end.nil?   || line.timestamp > @end
+        @start_ms = line.timestamp if @start_ms.nil? || line.timestamp < @start_ms
+        @end_ms   = line.timestamp if @end_ms.nil?   || line.timestamp > @end_ms
       end
       
       def elapsed_in_ms
-        @end - @start
+        @end_ms - @start_ms
       end
       
       def elapsed
@@ -50,6 +50,14 @@ module Jmeter
       
       def total_requests
         @req_count
+      end
+      
+      def start_date
+        Time.at(@start_ms / 1000.0)
+      end
+      
+      def end_date
+        Time.at(@end_ms / 1000.0)
       end
     end
   end

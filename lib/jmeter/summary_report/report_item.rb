@@ -1,3 +1,5 @@
+require 'descriptive_statistics'
+
 module Jmeter
   module SummaryReport
     class ReportItem
@@ -26,11 +28,14 @@ module Jmeter
       
       def text_summary
         sorted_items = @items.sort
+        avg = @items.reduce { |n,s| s += n } / @items.size
         p90 = sorted_items[(self.size * 0.90).round]
         p95 = sorted_items[(self.size * 0.95).round]
         err_rate = round(self.error_rate, 3) * 100
-        "#{@label}: #{self.size}/#{self.errors} reqs/err(#{round(self.error_rate, 3) * 100}%), " +
-        "90% <= #{p90}ms, 95% <= #{p95}ms"
+        
+        "\"#{@label}\" => reqs/err: #{self.size}/#{self.errors} (#{round(self.error_rate, 3) * 100}%), "+
+        "min/avg/max/sd: #{@items.min}/#{avg}/#{@items.max}/#{@items.standard_deviation.to_i}ms, "+
+        "90/95% <= #{p90}/#{p95}ms"
       end
       
       private
