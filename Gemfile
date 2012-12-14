@@ -4,7 +4,8 @@ gem 'rake'
 gem 'descriptive_statistics'
 gem 'formatador'
 
-group :test do
+group :test, :development do
   gem 'minitest'
   gem 'minitest-colorize'
+  gem 'pry'
 end

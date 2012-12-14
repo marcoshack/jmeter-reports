@@ -1,12 +1,19 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    coderay (1.0.8)
     descriptive_statistics (1.1.1)
     formatador (0.2.4)
+    method_source (0.8.1)
     minitest (2.12.1)
     minitest-colorize (0.0.4)
       minitest (~> 2.0)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
     rake (10.0.2)
+    slop (3.3.3)
 
 PLATFORMS
   ruby
@@ -16,4 +23,5 @@ DEPENDENCIES
   formatador
   minitest
   minitest-colorize
+  pry
   rake

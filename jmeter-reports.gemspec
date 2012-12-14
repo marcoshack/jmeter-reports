@@ -25,4 +25,6 @@ Gem::Specification.new do |gem|
   
   gem.add_development_dependency "rake"
   gem.add_development_dependency "minitest", "~> 3"
+  gem.add_development_dependency "minitest-colorize"
+  gem.add_development_dependency "pry"
 end

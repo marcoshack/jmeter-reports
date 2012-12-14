@@ -4,12 +4,12 @@ $:.push File.join(File.dirname(__FILE__), '..'), File.join(File.dirname(__FILE__
 
 begin
   require 'bundler/setup'
+  Bundler.require(:default)
 rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
 require 'jmeter/reports'
-require 'formatador'
 
 if ARGV.empty?
   puts "Usage: #{File.basename(__FILE__)} <report_file>"
@@ -32,7 +32,7 @@ begin
     puts "    Total requests: #{report.total_requests}"
     puts "Average throughput: #{report.avg_throughput} RPS"
     puts ""
-    Formatador.display_table(report.table_data, [:label,:avg_thrput,:reqs,:errors,:err_pct,:min,:avg,:max,:sd])
+    Formatador.display_table(report.table_data, [:label,:reqs,:errors,:err_pct,:min,:avg,:max,:sd,:avg_thrput])
     puts ""
   end
 rescue Exception => e

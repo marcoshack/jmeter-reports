@@ -26,11 +26,11 @@ module Jmeter
       end
       
       def test_start_date
-        assert_equal Time.mktime(2012,12,11,10,47,32).to_i, @report.start_date.to_i, 'invalid start date'
+        assert_equal Time.new(2012,12,11,12,47,32,"+00:00").to_i, @report.start_date.utc.to_i, 'invalid start date'
       end
       
       def test_end_date
-        assert_equal Time.mktime(2012,12,11,10,47,34).to_i, @report.end_date.to_i, 'invalid end date'
+        assert_equal Time.new(2012,12,11,12,47,34,"+00:00").to_i, @report.end_date.utc.to_i, 'invalid end date'
       end
     end
   end
