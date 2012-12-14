@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     descriptive_statistics (1.1.1)
+    formatador (0.2.4)
     minitest (2.12.1)
     minitest-colorize (0.0.4)
       minitest (~> 2.0)
@@ -12,6 +13,7 @@ PLATFORMS
 
 DEPENDENCIES
   descriptive_statistics
+  formatador
   minitest
   minitest-colorize
   rake

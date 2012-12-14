@@ -59,6 +59,10 @@ module Jmeter
       def end_date
         Time.at(@end_ms / 1000.0)
       end
+      
+      def table_data
+        @items.values.collect { |i| i.table_data }
+      end
     end
   end
 end

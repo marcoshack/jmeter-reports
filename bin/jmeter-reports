@@ -1,7 +1,15 @@
 #!/usr/bin/env ruby
 
 $:.push File.join(File.dirname(__FILE__), '..'), File.join(File.dirname(__FILE__), '..','lib')
+
+begin
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+end
+
 require 'jmeter/reports'
+require 'formatador'
 
 if ARGV.empty?
   puts "Usage: #{File.basename(__FILE__)} <report_file>"
@@ -17,15 +25,17 @@ begin
     end
   else
     report = Jmeter::SummaryReport::Report.create(ARGV.first)
-    puts "Test run between #{report.start_date} and #{report.end_date} (#{report.elapsed} secs)"
-    puts "Total requests: #{report.total_requests}"
+    puts ""
+    puts "             Start: #{report.start_date}"
+    puts "               End: #{report.end_date}"
+    puts "          Duration: #{report.elapsed} secs"
+    puts "    Total requests: #{report.total_requests}"
     puts "Average throughput: #{report.avg_throughput} RPS"
-    puts "Test plan:"
-    report.items.each do |item|
-      puts "\t#{item.text_summary}"
-    end
+    puts ""
+    Formatador.display_table(report.table_data, [:label,:avg_thrput,:reqs,:errors,:err_pct,:min,:avg,:max,:sd])
+    puts ""
   end
 rescue Exception => e
   puts e.message
-  exit 1
+  exit 2
 end

@@ -16,8 +16,12 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+  
+  gem.required_ruby_version = '>= 1.9'
 
+  gem.add_runtime_dependency "bundler"
   gem.add_runtime_dependency "descriptive_statistics"
+  gem.add_runtime_dependency "formatador"
   
   gem.add_development_dependency "rake"
   gem.add_development_dependency "minitest", "~> 3"
