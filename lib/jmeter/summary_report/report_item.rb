@@ -45,17 +45,17 @@ module Jmeter
       def table_data
         sorted_items = @items.sort
         {
-          :label      => @label, 
+          :label      => "[green]#{@label}[/]", 
           :reqs       => self.size, 
-          :errors     => self.errors, 
+          :errors     => (self.errors > 0 ? "[red]#{self.errors}[/]" : self.errors), 
           :err_pct    => round(self.error_rate * 100, 1),
-          :avg_thrput => "#{round(self.avg_throughput, 3)} RPS", 
+          :avg_thrput => "[yellow]#{round(self.avg_throughput, 3)} RPS[/]", 
           :min        => @items.min,
-          :avg        => @items.reduce { |n,s| s += n } / @items.size, 
+          :avg        => "[yellow]#{@items.reduce { |n,s| s += n } / @items.size}[/]", 
           :max        => @items.max,
-          :sd         => "#{@items.standard_deviation.to_i}ms", 
-          :pct_90     => "#{sorted_items[(self.size * 0.90).round]}ms",
-          :pct_95     => "#{sorted_items[(self.size * 0.95).round]}ms"
+          :sd         => "[yellow]#{@items.standard_deviation.to_i}[/]", 
+          :pct_90     => "#{sorted_items[(self.size * 0.90).round]}",
+          :pct_95     => "#{sorted_items[(self.size * 0.95).round]}"
         }
       end
       
