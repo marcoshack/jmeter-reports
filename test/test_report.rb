@@ -5,8 +5,7 @@ module Jmeter
   module SummaryReport
     class TestReport < MiniTest::Unit::TestCase
       def setup
-        fixture = File.expand_path('fixtures/summary_report.csv', File.dirname(__FILE__))
-        @report = Report.create(fixture)
+        @report = Report.create(File.expand_path('fixtures/summary_report1.csv', File.dirname(__FILE__)))
       end
 
       def test_report_items

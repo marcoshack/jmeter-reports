@@ -8,7 +8,17 @@ Command-line tools for JMeter report processing. Right now it supports only CSV 
 * Min / Avg / Max / Standard Deviation
 * 90 and 95 response time percentiles
 
-Example:
+# Install
+
+Requires Ruby >= 1.9
+
+    gem install jmeter-reports
+  
+# Usage
+
+    jmeter-reports <path_to_summary_report_file.csv>
+
+will show you something like this:
 
                  Start: 2012-12-14 16:22:53 -0200
                    End: 2012-12-14 16:28:33 -0200
@@ -28,13 +38,14 @@ Example:
     | Login                    | 2620 | 570    | 21.7    | 377 | 4185 | 25724 | 4401ms | 7.705 RPS  |
     +--------------------------+------+--------+---------+-----+------+-------+--------+------------+
 
-# Install
+you can also pass a list of summary report files to get an overview of each one. Let say you've a bunch of summary files named _summary\_report\_N.csv_:
 
-Requires Ruby >= 1.9
+    jmeter-reports summary_report_*
 
-    gem install jmeter-reports
-  
-# Usage
-
-    jmeter-reports <path_to_summary_report_file.csv>
-
+    +----------------------+---------------------------+---------------------------+---------+------------+
+    | filename             | start                     | end                       | samples | avg_thrput |
+    +----------------------+---------------------------+---------------------------+---------+------------+
+    | summary_report_1.csv | 2012-12-11 10:47:32 -0200 | 2012-12-11 10:47:34 -0200 | 9       | 3 RPS      |
+    +----------------------+---------------------------+---------------------------+---------+------------+
+    | summary_report_2.csv | 2012-12-11 10:47:32 -0200 | 2012-12-11 10:47:35 -0200 | 16      | 4 RPS      |
+    +----------------------+---------------------------+---------------------------+---------+------------+

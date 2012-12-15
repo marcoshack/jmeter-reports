@@ -12,10 +12,17 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.3.1)
+    pry (0.9.10-java)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+      spoon (~> 0.0)
     rake (10.0.2)
     slop (3.3.3)
+    spoon (0.0.1)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
