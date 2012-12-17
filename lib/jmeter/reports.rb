@@ -1,4 +1,7 @@
-require 'jmeter/summary_report/report'
-require 'jmeter/summary_report/report_item'
-require 'jmeter/summary_report/result_line'
-require 'jmeter/reports/version'
+require 'jmeter/reports/summary'
+require 'jmeter/reports/summary_item'
+require 'jmeter/reports/summary_line'
+
+module JmeterReports
+  VERSION = "0.0.6"
+end

@@ -21,12 +21,12 @@ begin
     table_data = []
     headers    = [:filename,:start,:end,:samples,:avg_thrput]
     ARGV.each do |filename|
-      r = Jmeter::SummaryReport::Report.create(filename)
+      r = JmeterReports::Summary.create(filename)
       table_data << { :filename => File.basename(filename), :start => r.start_date, :end => r.end_date, 
                       :samples => r.total_requests, :avg_thrput => "#{r.avg_throughput} RPS" }
     end
   else
-    report = Jmeter::SummaryReport::Report.create(ARGV.first)
+    report = JmeterReports::Summary.create(ARGV.first)
     puts ""
     puts "             Start: #{report.start_date}"
     puts "               End: #{report.end_date}"
@@ -39,6 +39,10 @@ begin
   end
   
   Formatador.display_compact_table(table_data, headers)
+  
+  puts ""
+  puts "  Time values in milliseconds and throughput in Requests Per Second."
+  puts ""
 
 rescue Exception => e
   puts e.message

@@ -5,7 +5,7 @@ require 'jmeter/reports'
 
 Gem::Specification.new do |gem|
   gem.name          = "jmeter-reports"
-  gem.version       = Jmeter::Reports::VERSION
+  gem.version       = JmeterReports::VERSION
   gem.authors       = ["Marcos Hack"]
   gem.email         = ["marcos.hack@gmail.com"]
   gem.description   = %q{JMeter Reports}
