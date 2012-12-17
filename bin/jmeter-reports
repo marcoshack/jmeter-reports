@@ -32,14 +32,13 @@ begin
     puts "               End: #{report.end_date}"
     puts "          Duration: #{report.elapsed} secs"
     puts "    Total requests: #{report.total_requests}"
-    puts "Average throughput: #{report.avg_throughput} RPS"
-    puts ""
+    puts "Overall throughput: #{report.avg_throughput} RPS"
     puts ""
     table_data = report.table_data
-    headers = [:label,:reqs,:errors,:err_pct,:min,:avg,:max,:sd,:avg_thrput]
+    headers = [:label,:reqs,:errors,:err_pct,:min,:avg,:max,:sd,:avg_thrput,:pct_90,:pct_95]
   end
   
-  Formatador.display_table(table_data, headers)
+  Formatador.display_compact_table(table_data, headers)
 
 rescue Exception => e
   puts e.message
