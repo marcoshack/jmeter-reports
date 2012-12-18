@@ -1,10 +1,10 @@
 source :rubygems
 
-gem 'rake'
 gem 'descriptive_statistics'
 gem 'formatador'
 
-group :test, :development do
+group :test do
+  gem 'rake'
   gem 'minitest'
   gem 'minitest-colorize'
   gem 'pry'

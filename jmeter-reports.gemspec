@@ -19,10 +19,10 @@ Gem::Specification.new do |gem|
   
   gem.required_ruby_version = '>= 1.9'
 
-  gem.add_runtime_dependency "bundler"
   gem.add_runtime_dependency "descriptive_statistics"
   gem.add_runtime_dependency "formatador"
-  
+
+  gem.add_development_dependency "bundler"  
   gem.add_development_dependency "rake"
   gem.add_development_dependency "minitest", "~> 3"
   gem.add_development_dependency "minitest-colorize"

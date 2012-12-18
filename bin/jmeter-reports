@@ -1,14 +1,9 @@
 #!/usr/bin/env ruby
 
+require 'formatador'
+require 'descriptive_statistics'
+
 $:.push File.join(File.dirname(__FILE__), '..'), File.join(File.dirname(__FILE__), '..','lib')
-
-begin
-  require 'bundler/setup'
-  Bundler.require(:default)
-rescue LoadError
-  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
-end
-
 require 'jmeter/reports'
 
 def version_message
