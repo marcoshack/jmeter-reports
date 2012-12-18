@@ -11,19 +11,38 @@ end
 
 require 'jmeter/reports'
 
-if ARGV.empty?
-  puts "Usage: #{File.basename(__FILE__)} <report_file>"
-  exit 1
+def version_message
+  "JMeter Reports version #{JmeterReports::VERSION}"
 end
 
-begin
-  if ARGV.size > 1
-    JmeterReports::Views::AsciiSummaryList.new(ARGV).render
+def usage_message
+  """#{version_message}
+
+Usage: 
+    #{File.basename(__FILE__)} <report_file>        | show the summary report for the given file
+    #{File.basename(__FILE__)} <report_file_list>   | show a overview list of all report files
+    #{File.basename(__FILE__)} --version            | show jmeter-reports version
+    #{File.basename(__FILE__)} --help               | show this help page
+  """
+end
+
+def process_report(file_list)
+  if file_list.size > 1
+    JmeterReports::Views::AsciiSummaryList.new(file_list).render
   else
-    JmeterReports::Views::AsciiSummary.new(JmeterReports::Summary.create(ARGV.first)).render
+    JmeterReports::Views::AsciiSummary.new(JmeterReports::Summary.create(file_list.first)).render
   end
-  
-rescue Exception => e
-  puts e.message
-  exit 2
+end
+
+if ARGV.empty? || ARGV[0] == '--help'
+  puts usage_message
+elsif ARGV[0] == "--version"
+  puts version_message
+else
+  begin
+    process_report(ARGV)
+  rescue Exception => e
+    puts e.message
+    exit 2
+  end
 end
