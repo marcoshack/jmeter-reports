@@ -3,8 +3,8 @@ require 'descriptive_statistics'
 module JmeterReports
   class SummaryItem
     def initialize(label)
-      @label = label
-      @items = []
+      @label       = label
+      @items       = []
       @error_count = 0
       @req_count   = 0
     end
@@ -26,7 +26,7 @@ module JmeterReports
     end
     
     def avg_throughput
-      @req_count / self.elapsed.to_f
+      @req_count > 1 ? @req_count / self.elapsed.to_f : 0.0
     end
     
     def size
@@ -41,26 +41,28 @@ module JmeterReports
       @error_count / self.size.to_f
     end
     
-    def table_data
-      sorted_items = @items.sort
-      {
-        :label      => "[green]#{@label}[/]", 
-        :reqs       => self.size, 
-        :errors     => (self.errors > 0 ? "[red]#{self.errors}[/]" : self.errors), 
-        :err_pct    => round(self.error_rate * 100, 1),
-        :avg_thrput => "[yellow]#{round(self.avg_throughput, 3)}[/]", 
-        :min        => @items.min,
-        :avg        => "[yellow]#{@items.reduce { |n,s| s += n } / @items.size}[/]", 
-        :max        => @items.max,
-        :sd         => "[yellow]#{@items.standard_deviation.to_i}[/]", 
-        :pct_90     => "#{sorted_items[(self.size * 0.90).round]}",
-        :pct_95     => "#{sorted_items[(self.size * 0.95).round]}"
-      }
+    def percentil(percentil)
+      @items.sort[((percentil / 100.0) * @items.size).ceil]
     end
     
-    private
-    def round(float_number, dec)
-      (float_number * 10**dec).to_i / (10**dec).to_f
+    def min
+      @items.min
+    end
+    
+    def avg
+      @items.reduce { |n,s| s += n } / @items.size
+    end
+    
+    def max
+      @items.max
+    end
+    
+    def sd
+      @items.standard_deviation.to_i
+    end
+
+    def label
+      @label
     end
   end
 end
